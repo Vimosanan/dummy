@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Cartrack</string>
+    <string name="header_Menu">Cartrack Menu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="List_of_the_User">List of the User</string>
+    <string name="close">close</string>
+    <string name="Open">open</string>
+    <string name="User_Name">User Name</string>
+    <string name="Companey_Name">Companey Name</string>
+    <string name="Contact_Number">Contact Number</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="Welcome_to_Registration">Welcome to Registration</string>
+    <string name="Welcome_to_Cartrack">Welcome to Cartrack</string>
+    <string name="Forget_Password">Forget Password</string>
+
+    <!--- Button text -->
+    <string name="Register">Register</string>
+
+    <!-- hint name -->
+    <string name="Hint_name">Name</string>
+    <string name="Hint_Address">Address</string>
+    <string name="Hint_Phone">Phone</string>
+    <string name="Hint_Password">Password</string>
+    <string name="Hint_Conform_Password">Conform Password</string>
+    <string name="Hint_Email">Email</string>
+</resources>

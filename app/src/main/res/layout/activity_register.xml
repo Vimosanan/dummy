@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fillViewport="true"
+    android:background="?attr/backgroundColor"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/Up_uname"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="196dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/textboxtshape"
+            android:ems="10"
+            android:hint="@string/Hint_name"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:textColor="#F4F2F2"
+            android:textColorHint="#B8B8B8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints="no"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/Up_Post_Address"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/textboxtshape"
+            android:ems="10"
+            android:hint="@string/Hint_Address"
+            android:inputType="textPostalAddress"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Up_Phone_number"
+            android:autofillHints="no"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/Up_Phone_number"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/textboxtshape"
+            android:ems="10"
+            android:hint="@string/Hint_Phone"
+            android:inputType="phone"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Up_email"
+            android:importantForAutofill="no"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/Up_password"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/textboxtshape"
+            android:ems="10"
+            android:hint="@string/Hint_Password"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Up_Post_Address"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/Up_Confom_password"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/textboxtshape"
+            android:ems="10"
+            android:hint="@string/Hint_Conform_Password"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Up_password"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style"
+            android:text="@string/Register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Up_Confom_password" />
+
+        <EditText
+            android:id="@+id/Up_email"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/textboxtshape"
+            android:ems="10"
+            android:hint="@string/Hint_Email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Up_uname"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:fontFamily="casual"
+            android:text="@string/Welcome_to_Registration"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UnusedAttribute" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
