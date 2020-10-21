@@ -9,12 +9,17 @@
     <string name="Companey_Name">Companey Name</string>
     <string name="Contact_Number">Contact Number</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="Welcome_to_Registration">Welcome to Registration</string>
+    <string name="Welcome_to_Registration">CarTrack</string>
     <string name="Welcome_to_Cartrack">Welcome to Cartrack</string>
     <string name="Forget_Password">Forget Password</string>
 
     <!--- Button text -->
     <string name="Register">Register</string>
+    <string name="Login">Login</string>
+
+    <!-- Menu text -->
+    <string name="Home_menu">Home</string>
+    <string name="Dark_Mode_menu">Dark Mode</string>
 
     <!-- hint name -->
     <string name="Hint_name">Name</string>

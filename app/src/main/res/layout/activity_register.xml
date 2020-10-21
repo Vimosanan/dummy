@@ -13,137 +13,141 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/Up_uname"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="196dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textboxtshape"
-            android:ems="10"
+            android:layout_marginRight="30dp"
             android:hint="@string/Hint_name"
-            android:inputType="textPersonName"
-            android:paddingLeft="20dp"
-            android:textColor="#F4F2F2"
-            android:textColorHint="#B8B8B8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autofillHints="no"
-            android:paddingStart="20dp"
-            tools:ignore="RtlSymmetry" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/Up_Post_Address"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textboxtshape"
-            android:ems="10"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userName"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Up_Post_AddressMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
             android:hint="@string/Hint_Address"
-            android:inputType="textPostalAddress"
-            android:paddingLeft="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_Phone_number"
-            android:autofillHints="no"
-            android:paddingStart="20dp"
-            tools:ignore="RtlSymmetry" />
+            app:layout_constraintTop_toBottomOf="@+id/Up_Phone_numberMain">
 
-        <EditText
-            android:id="@+id/Up_Phone_number"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textboxtshape"
-            android:ems="10"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Up_Post_Address"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Up_Phone_numberMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
             android:hint="@string/Hint_Phone"
-            android:inputType="phone"
-            android:paddingLeft="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_email"
-            android:importantForAutofill="no"
-            android:paddingStart="20dp"
-            tools:ignore="RtlSymmetry" />
+            app:layout_constraintTop_toBottomOf="@+id/Up_emailMain">
 
-        <EditText
-            android:id="@+id/Up_password"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textboxtshape"
-            android:ems="10"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Up_Phone_number"
+                android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Up_passwordMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
             android:hint="@string/Hint_Password"
-            android:inputType="textPassword"
-            android:paddingLeft="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_Post_Address"
-            android:paddingStart="20dp"
-            tools:ignore="RtlSymmetry"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/Up_Post_AddressMain"
+            app:endIconMode="password_toggle">
 
-        <EditText
-            android:id="@+id/Up_Confom_password"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textboxtshape"
-            android:ems="10"
-            android:hint="@string/Hint_Conform_Password"
-            android:inputType="textPassword"
-            android:paddingLeft="20dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Up_password"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Up_Confom_passwordMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
+            android:hint="@string/Hint_Password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_password"
-            android:paddingStart="20dp"
-            tools:ignore="RtlSymmetry"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/Up_passwordMain"
+            app:endIconMode="password_toggle">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Up_Confom_password"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/update"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/button_style"
             android:text="@string/Register"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_Confom_password" />
+            app:layout_constraintTop_toBottomOf="@+id/Up_Confom_passwordMain"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/Up_email"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textboxtshape"
-            android:ems="10"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Up_emailMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="30dp"
             android:hint="@string/Hint_Email"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_uname"
-            android:paddingStart="20dp"
-            tools:ignore="RtlSymmetry"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/Up_uname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Up_email"
+                android:inputType="textEmailAddress"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/textView4"

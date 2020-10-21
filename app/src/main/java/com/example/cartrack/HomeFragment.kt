@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
 //                    }
                     val userAdapter = UserAdapter(response.body())
                     recyclerView!!.adapter = userAdapter
-                    Toast.makeText(activity, "${response.body()?.size.toString()}", Toast.LENGTH_SHORT).show()
+                  //  Toast.makeText(activity, "${response.body()?.size.toString()}", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<List<Users>>, t: Throwable) {
