@@ -8,13 +8,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.cartrack.entitys.AppDatabase
 import com.example.cartrack.entitys.UserOfApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class RegisterActivity : BaseActivity(),View.OnClickListener {
+class RegisterActivity : AppCompatActivity(),View.OnClickListener {
     private var register: Button? = null
     private var reg_uname: EditText? = null
     private var phone_number:EditText? = null
@@ -78,15 +79,16 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
                             data?.forEach {
                                 println(it)
                             }
+                            if (data != null){
+                                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                                startActivity(intent)
+                            }
+                            else{
+                                email?.error = "Email address is Wrong"
+                                email?.requestFocus()
+                            }
                         }
-                        if (data != null){
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                        }
-                        else{
-                            email?.error = "Email address is Wrong"
-                            email?.requestFocus()
-                        }
+
                     } else {
                         confom_password?.error = "Passwords are not Matched"
                         confom_password?.requestFocus()

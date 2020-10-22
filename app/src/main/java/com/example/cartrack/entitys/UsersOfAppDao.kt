@@ -12,8 +12,8 @@ interface UsersOfAppDao {
     @Query("SELECT * FROM Users_App WHERE User_Name = :fullName LIMIT 1")
     suspend fun findDirectorByName(fullName: String?): UserOfApp?
 
-    @Query("SELECT * FROM Users_App WHERE User_Name = :username AND Password = :password LIMIT 1")
-    abstract fun getSingleUser(username: String, password: String?): UserOfApp?
+    @Query("SELECT * FROM Users_App WHERE Email = :email AND Password = :password LIMIT 1")
+    abstract fun getSingleUser(email: String, password: String?): UserOfApp?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(users_App: UserOfApp): Long

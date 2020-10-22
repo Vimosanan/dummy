@@ -6,12 +6,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.cartrack.entitys.AppDatabase
 import com.example.cartrack.entitys.UserOfApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class LoginActivity : BaseActivity(),View.OnClickListener {
+class LoginActivity : AppCompatActivity(),View.OnClickListener {
     private var registerNow: TextView? = null
     private var password: EditText? = null
     private var email: EditText? = null
@@ -42,8 +43,17 @@ class LoginActivity : BaseActivity(),View.OnClickListener {
                 GlobalScope.launch {
                     val db = AppDatabase(this@LoginActivity)
                     data = db.usersOfAppDao.getSingleUser(login_Email,pass)
+                    println(data)
+                    if (data != null){
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    else{
+                        /*this@LoginActivity.email?.error = "Email address is Wrong"
+                        this@LoginActivity.email?.requestFocus()*/
+                    }
                 }
-                if (data != null){
+              /*  if (data != null){
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
@@ -52,7 +62,7 @@ class LoginActivity : BaseActivity(),View.OnClickListener {
                     email?.requestFocus()
                     password?.error = "Password is Wrong"
                     password?.requestFocus()
-                }
+                }*/
             }
         }
     }

@@ -41,9 +41,9 @@
     <!-- Menu text -->
     <string name="Home_menu">Home</string>
     <string name="Dark_Mode_menu">Dark Mode</string>
-    <string name="user_detail" />
-    <string name="user_location" />
-    <string name="user_Company" />
+    <string name="user_detail" >User</string>
+    <string name="user_location" >Map</string>
+    <string name="user_Company" >Company</string>
 
     <!-- hint name -->
     <string name="Hint_name">Name</string>

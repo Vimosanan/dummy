@@ -16,5 +16,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_navigation_menu"
             android:id="@+id/BottomNavigation"
-            tools:layout_editor_absoluteX="4dp" />
+            tools:layout_editor_absoluteX="4dp"
+            app:itemIconSize="28dp"
+            app:itemTextColor="@color/primaryTextColor"
+            app:itemBackground="@color/secondaryDarkColor" />
 </androidx.constraintlayout.widget.ConstraintLayout>

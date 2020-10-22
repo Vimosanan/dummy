@@ -24,8 +24,9 @@ class UserAdapter(private val nameList: List<Users>?, private val context: Conte
             nameList[position].company!!.name.toString()
         )
         holder.cartView?.setOnClickListener(View.OnClickListener {
+            val idd = this.nameList[position].id
             val intent = Intent(context,SingleUserActivity::class.java)
-            intent.putExtra("ID", nameList[position].id)
+            intent.putExtra("ID", idd)
             context?.startActivity(intent)
         })
     }

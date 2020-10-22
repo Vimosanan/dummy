@@ -32,6 +32,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         drawerLayout = findViewById(R.id.drawer)
+        val actionbar = supportActionBar
+        actionbar!!.title = "List of Users"
         navigationView = findViewById(R.id.navigationView)
         navigationView!!.setNavigationItemSelectedListener(this)
         actionBarDrawerToggle = ActionBarDrawerToggle(

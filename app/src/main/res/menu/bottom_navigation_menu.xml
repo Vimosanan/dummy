@@ -9,7 +9,7 @@
         android:id="@+id/Loaction"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_map_24"
-        android:title="@string/user_location"/>
+        android:title="@string/user_location" />
     <item
         android:id="@+id/company"
         android:enabled="true"

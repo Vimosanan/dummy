@@ -12,7 +12,7 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
     <color name="secondaryTextColorDark">#000000</color>
-    <color name="primaryDarkTextColor">#303030</color>
+    <color name="primaryDarkTextColor">#222222</color>
     <color name="primaryDarkBagColor">#191919</color>
-    <color name="secondaryDarkTextColor">#424242</color>
+    <color name="secondaryDarkTextColor">#040404</color>
 </resources>
