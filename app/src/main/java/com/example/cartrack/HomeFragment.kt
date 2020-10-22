@@ -54,10 +54,7 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<List<Users>>, response: Response<List<Users>>) {
                 response.body()
                 if (response.isSuccessful){
-//                    for (respons in response.body()!!){
-//                        respons.name
-//                    }
-                    val userAdapter = UserAdapter(response.body())
+                    val userAdapter = UserAdapter(response.body(),context)
                     recyclerView!!.adapter = userAdapter
                   //  Toast.makeText(activity, "${response.body()?.size.toString()}", Toast.LENGTH_SHORT).show()
                 }

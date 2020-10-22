@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.cartrack.entitys.AppDatabase
 
-open class BaseActivity : AppCompatActivity(){
+open class
+
+BaseActivity : AppCompatActivity(){
     private lateinit var sharedPre:SharedPref
     override fun onCreate(
         savedInstanceState: Bundle?,
@@ -21,6 +23,15 @@ open class BaseActivity : AppCompatActivity(){
         }
         else{
             setTheme(R.style.AppThemeLite)
+        }
+    }
+    fun setDarkAction() {
+        sharedPre = SharedPref(this)
+        if (sharedPre.loadNightModeState()){
+            setTheme(R.style.AppThemeDarkActionBar)
+        }
+        else{
+            setTheme(R.style.AppThemeLiteActionBar)
         }
     }
 

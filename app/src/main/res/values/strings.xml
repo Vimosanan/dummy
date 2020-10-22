@@ -12,6 +12,27 @@
     <string name="Welcome_to_Registration">CarTrack</string>
     <string name="Welcome_to_Cartrack">Welcome to Cartrack</string>
     <string name="Forget_Password">Forget Password</string>
+    <string name="RegisterNow">Are you New? Register now</string>
+
+    <!--- Single Pr-->
+    <string name="User_Profile">Profile</string>
+    <string name="user_name_sing">Name:</string>
+    <string name="user_username_sing">Username:</string>
+    <string name="user_email_sing">Email:</string>
+    <string name="user_phone_sing">Phone Number:</string>
+    <string name="user_website_sing">Website:</string>
+
+    <string name="user_address_sing">Address</string>
+    <string name="user_street_sing">Street:</string>
+    <string name="user_suite_sing">Suite:</string>
+    <string name="user_city_sing">City:</string>
+    <string name="user_zipcode_sing">Zipcode:</string>
+
+
+    <string name="user_CompanyDetails_sing">Company Details</string>
+    <string name="user_Com_name_sing">Name:</string>
+    <string name="user_catchPhrase_sing">Catch Phrase:</string>
+    <string name="user_bs_sing">BS:</string>
 
     <!--- Button text -->
     <string name="Register">Register</string>
@@ -20,6 +41,9 @@
     <!-- Menu text -->
     <string name="Home_menu">Home</string>
     <string name="Dark_Mode_menu">Dark Mode</string>
+    <string name="user_detail" />
+    <string name="user_location" />
+    <string name="user_Company" />
 
     <!-- hint name -->
     <string name="Hint_name">Name</string>
@@ -28,4 +52,6 @@
     <string name="Hint_Password">Password</string>
     <string name="Hint_Conform_Password">Conform Password</string>
     <string name="Hint_Email">Email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

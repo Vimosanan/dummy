@@ -1,10 +1,12 @@
 package com.example.cartrack
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.room.Room
 import com.example.cartrack.entitys.AppDatabase
@@ -13,7 +15,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class RegisterActivity : BaseActivity(),View.OnClickListener {
-    private val TAG = "DB_ACCESS"
     private var register: Button? = null
     private var reg_uname: EditText? = null
     private var phone_number:EditText? = null
@@ -21,12 +22,9 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
     private var reg_password:EditText? = null
     private var confom_password:EditText? = null
     private var email:EditText? = null
+    private var data:List<UserOfApp>? = null
 
-
-    var UID = ""
-    var Ntoken: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
-        setDark()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         reg_uname = findViewById<View>(R.id.userName) as EditText
@@ -37,15 +35,13 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
         email = findViewById<View>(R.id.Up_email) as EditText
         register = findViewById<View>(R.id.update) as Button
 
-
-
         register!!.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.update -> {
-                Toast.makeText(this, "clicked", Toast.LENGTH_LONG).show()
+               // Toast.makeText(this, "clicked", Toast.LENGTH_LONG).show()
                 val loginN: String = reg_uname?.text.toString()
                 val pass: String = reg_password?.text.toString()
                 val phone_N: String = phone_number?.text.toString()
@@ -77,11 +73,19 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
                         //saveData(loginN, phone_N, address, pass, email_ad)
                         GlobalScope.launch {
                             val db = AppDatabase(this@RegisterActivity)
-                            db.usersOfAppDao.insert(UserOfApp(23,loginN,phone_N,address,pass,email_ad))
-                            var data = db.usersOfAppDao.allUsers
+                            db.usersOfAppDao.insert(UserOfApp(1,loginN,phone_N,address,pass,email_ad))
+                            data = db.usersOfAppDao.allUsers
                             data?.forEach {
                                 println(it)
                             }
+                        }
+                        if (data != null){
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else{
+                            email?.error = "Email address is Wrong"
+                            email?.requestFocus()
                         }
                     } else {
                         confom_password?.error = "Passwords are not Matched"

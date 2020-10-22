@@ -1,110 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="?attr/backgroundColor">
+    android:fillViewport="true"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/SendEmail"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/button_style"
-        android:text="@string/Login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_passwordMain" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Login_passwordMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="30dp"
-        android:hint="@string/Hint_Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reset_emailMain"
-        app:endIconMode="password_toggle">
-
-        <com.google.android.material.textfield.TextInputEditText
+        android:background="@drawable/green_background">
+        <Button
+            android:id="@+id/SendEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/Login_password"
-            android:inputType="textPassword"/>
+            android:layout_height="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/login_button_style"
+            android:textColor="#fff"
+            android:text="@string/Login"
+            app:layout_constraintBottom_toTopOf="@+id/registerNow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/LoginRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/button_style"
-        android:text="@string/Register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SendEmail" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/reset_emailMain"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="246dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="@string/Hint_Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Login_passwordMain"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="40dp"
+            android:hint="@string/Hint_Password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintBottom_toTopOf="@+id/SendEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/reset_emailMain"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/reset_email"
-            android:inputType="textEmailAddress"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:hint="@string/Hint_Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/Login_passwordMain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/reset_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        android:fontFamily="casual"
-        android:text="@string/Welcome_to_Cartrack"
-        android:textColor="?attr/tint"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="jelly_bean" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/forGetPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="@string/Forget_Password"
-        android:textColor="?attr/tint"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginRegister" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="100dp"
+            app:layout_constraintBottom_toTopOf="@+id/reset_emailMain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.012"
+            app:srcCompat="@drawable/logo_cartrack" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/registerNow"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginBottom="76dp"
+            android:text="@string/RegisterNow"
+            android:textColor="?attr/tint"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

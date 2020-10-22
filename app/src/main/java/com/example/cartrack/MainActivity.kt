@@ -79,11 +79,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 fragmentTransaction!!.commit()
             }
             R.id.Register -> {
-                var intent = Intent(this,RegisterActivity::class.java)
+                val intent = Intent(this,RegisterActivity::class.java)
                 startActivity(intent)
             }
             R.id.Login -> {
-                var intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this,LoginActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -91,7 +91,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     }
     fun restartApp(){
-        var intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
     }
 }

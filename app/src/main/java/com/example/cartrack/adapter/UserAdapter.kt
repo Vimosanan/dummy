@@ -1,15 +1,19 @@
 package com.example.cartrack.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cartrack.R
+import com.example.cartrack.SingleUserActivity
 import com.example.cartrack.response.Users
 
 
-class UserAdapter(val nameList: List<Users>?) :
+class UserAdapter(private val nameList: List<Users>?, private val context: Context?) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int)
@@ -17,7 +21,13 @@ class UserAdapter(val nameList: List<Users>?) :
         holder.bindData(
             this.nameList!![position].name.toString(),
             nameList[position].email.toString(),
-            nameList[position].company!!.name.toString())
+            nameList[position].company!!.name.toString()
+        )
+        holder.cartView?.setOnClickListener(View.OnClickListener {
+            val intent = Intent(context,SingleUserActivity::class.java)
+            intent.putExtra("ID", nameList[position].id)
+            context?.startActivity(intent)
+        })
     }
 
     override fun getItemCount(): Int
@@ -30,7 +40,8 @@ class UserAdapter(val nameList: List<Users>?) :
         var textView = itemView?.findViewById<TextView>(R.id.nameOf)
         var date = itemView?.findViewById<TextView>(R.id.emailA)
         var shortDec = itemView?.findViewById<TextView>(R.id.comName)
-        fun bindData(name: String, email: String, phone: String ) {
+        var cartView = itemView?.findViewById<CardView>(R.id.clickCard)
+        fun bindData(name: String, email: String, phone: String) {
             textView?.text = name
             date?.text =email
             shortDec?.text =phone
