@@ -11,21 +11,26 @@ import androidx.fragment.app.Fragment
 import com.example.cartrack.api.NetworkClient
 import com.example.cartrack.api.RequestInterface
 import com.example.cartrack.response.Users
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapsInitializer
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class MapViewFragment : Fragment() {
+class MapViewFragment : Fragment(), OnMapReadyCallback,
+    GoogleMap.OnMarkerClickListener {
     private var key : Int? = null
     private var  mapView : com.google.android.gms.maps.MapView? = null
     private var requestInterface: RequestInterface? = null
-    private var map: GoogleMap? = null
+    private lateinit var map: GoogleMap
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +43,7 @@ class MapViewFragment : Fragment() {
             false
         )
         mapView = view.findViewById(com.example.cartrack.R.id.mapViewSub)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         mapView!!.onCreate(savedInstanceState)
         key = this.arguments?.getInt("Key")
 
@@ -71,13 +77,17 @@ class MapViewFragment : Fragment() {
                 if (response.isSuccessful) {
                     val lat = response.body()?.address?.geo?.lat
                     val lng = response.body()?.address?.geo?.lng
-                    val cameraUpdate = CameraUpdateFactory.newLatLngZoom(
-                        LatLng(
-                            lat!!.toDouble(),
-                            lng!!.toDouble()
-                        ), 10f
-                    )
-                    map?.animateCamera(cameraUpdate)
+                    val myPlace = LatLng(response.body()?.address?.geo?.lat!!.toDouble(), response.body()?.address?.geo?.lng!!.toDouble())  // this is New York
+                   // map.addMarker(MarkerOptions().position(myPlace).title("My Favorite City"))
+                    map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(myPlace, 12.0f))
+//                    val cameraUpdate = CameraUpdateFactory.newLatLngZoom(
+//                        LatLng(
+//                            lat!!.toDouble(),
+//                            lng!!.toDouble()
+//                        ), 10f
+//                    )
+//                    map?.animateCamera(cameraUpdate)
                     //Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -88,4 +98,12 @@ class MapViewFragment : Fragment() {
             }
         })
     }
+
+    override fun onMapReady(p0: GoogleMap?) {
+        TODO("Not yet implemented")
+        map.uiSettings.isZoomControlsEnabled = true
+        map.setOnMarkerClickListener(this)
+    }
+
+    override fun onMarkerClick(p0: Marker?) = false
 }

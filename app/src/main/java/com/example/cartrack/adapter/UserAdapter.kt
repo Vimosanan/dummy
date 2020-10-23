@@ -15,7 +15,9 @@ import com.example.cartrack.response.Users
 
 class UserAdapter(private val nameList: List<Users>?, private val context: Context?) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-
+    private val VIEW_TYPE_LOADING = 0
+    private val VIEW_TYPE_NORMAL = 1
+    private val isLoaderVisible = false
     override fun onBindViewHolder(holder: UserViewHolder, position: Int)
     {
         holder.bindData(
@@ -25,7 +27,7 @@ class UserAdapter(private val nameList: List<Users>?, private val context: Conte
         )
         holder.cartView?.setOnClickListener(View.OnClickListener {
             val idd = this.nameList[position].id
-            val intent = Intent(context,SingleUserActivity::class.java)
+            val intent = Intent(context, SingleUserActivity::class.java)
             intent.putExtra("ID", idd)
             context?.startActivity(intent)
         })
@@ -56,4 +58,5 @@ class UserAdapter(private val nameList: List<Users>?, private val context: Conte
         //return ViewHolder
         return UserViewHolder(view)
     }
+    
 }
