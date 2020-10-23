@@ -32,145 +32,183 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/Up_Post_AddressMain"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:layout_marginRight="30dp"-->
+<!--            android:hint="@string/Hint_Address"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/Up_Phone_numberMain"-->
+<!--            app:startIconDrawable="@drawable/ic_baseline_location_on_24">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/Up_Post_Address"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/Up_Post_AddressMain"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:layout_marginRight="30dp"-->
+<!--            android:hint="@string/Hint_Address"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/Up_Phone_numberMain"-->
+<!--            app:startIconDrawable="@drawable/ic_baseline_location_on_24">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/Up_Post_Address"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+        <Spinner
             android:id="@+id/Up_Post_AddressMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="30dp"
-            android:hint="@string/Hint_Address"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:entries="@array/country_arrays"
+            android:popupElevation="15dp"
+            android:paddingRight="0dp"
+            android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Up_Phone_numberMain"
-            app:startIconDrawable="@drawable/ic_baseline_location_on_24">
+            tools:ignore="MissingConstraints,UnusedAttribute" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Up_Post_Address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Up_Phone_numberMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="@string/Hint_Phone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Up_emailMain"
+                    app:startIconDrawable="@drawable/ic_baseline_phone_android_24">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Up_Phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/Up_Phone_numberMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="30dp"
-            android:hint="@string/Hint_Phone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_emailMain"
-            app:startIconDrawable="@drawable/ic_baseline_phone_android_24">
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Up_Phone_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Up_passwordMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="@string/Hint_Password"
+                    app:endIconMode="password_toggle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Up_Post_AddressMain"
+                    app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Up_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/Up_passwordMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="30dp"
-            android:hint="@string/Hint_Password"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_Post_AddressMain"
-            app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Up_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Up_Confom_passwordMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="@string/Hint_Password"
+                    app:endIconMode="password_toggle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Up_passwordMain"
+                    app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Up_Confom_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/Up_Confom_passwordMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="30dp"
-            android:hint="@string/Hint_Password"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_passwordMain"
-            app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Up_Confom_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/login_button_style"
+                    android:textColor="#fff"
+                    android:text="@string/Register"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Up_Confom_passwordMain"
+                    app:layout_constraintVertical_bias="0.0" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Up_emailMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="30dp"
+                    android:hint="@string/Hint_Email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Up_uname"
+                    app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-        <Button
-            android:id="@+id/update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/login_button_style"
-            android:textColor="#fff"
-            android:text="@string/Register"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_Confom_passwordMain"
-            app:layout_constraintVertical_bias="0.0" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Up_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/Up_emailMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="30dp"
-            android:hint="@string/Hint_Email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Up_uname"
-            app:startIconDrawable="@drawable/ic_baseline_email_24">
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Up_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo_cartrack" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/logo_cartrack" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+        </ScrollView>

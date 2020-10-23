@@ -11,8 +11,9 @@
     <color name="secondaryDarkColor">#004c40</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
-    <color name="secondaryTextColorDark">#000000</color>
+    <color name="secondaryCardTextColor">#ECECEC</color>
+    <color name="secondaryTextColorDark">#302F2F</color>
     <color name="primaryDarkTextColor">#222222</color>
     <color name="primaryDarkBagColor">#191919</color>
-    <color name="secondaryDarkTextColor">#040404</color>
+    <color name="secondaryDarkTextColor">#2C2C2C</color>
 </resources>

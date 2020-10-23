@@ -18,9 +18,16 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
     private var email: EditText? = null
     private var login: Button? = null
     private var data:UserOfApp? = null
+    private lateinit var sharedpre:SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        sharedpre = SharedPref(this)
+        if (sharedpre.loadLoginSharedPrefState()){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }else{
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_login)
+        }
         registerNow = findViewById<View>(R.id.registerNow) as TextView
         password = findViewById<View>(R.id.Login_password ) as EditText
         email = findViewById<View>(R.id.reset_email) as EditText
@@ -45,8 +52,10 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
                     data = db.usersOfAppDao.getSingleUser(login_Email,pass)
                     println(data)
                     if (data != null){
+                        sharedpre.loginSharedPrefState(true)
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
+                        this@LoginActivity.finish();
                     }
                     else{
                         /*this@LoginActivity.email?.error = "Email address is Wrong"

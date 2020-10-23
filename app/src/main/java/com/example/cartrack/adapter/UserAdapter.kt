@@ -53,7 +53,7 @@ class UserAdapter(private val nameList: List<Users>?, private val context: Conte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater.from(parent?.context)
-            .inflate(R.layout.user_row, parent, false);
+            .inflate(R.layout.cart_layout, parent, false);
 
         //return ViewHolder
         return UserViewHolder(view)

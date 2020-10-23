@@ -9,12 +9,20 @@ import android.widget.Button
 class LauncherActivity : AppCompatActivity(),View.OnClickListener {
     private var register: Button? = null
     private var login: Button? = null
+    private lateinit var sharedpre:SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launcher)
+        sharedpre = SharedPref(this)
+        if (sharedpre.loadLoginSharedPrefState()){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            this.finish();
+        }else{
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_launcher)
+        }
 
-        register = findViewById<View>(R.id.update) as Button
-        login = findViewById<View>(R.id.SendEmail) as Button
+        register = this.findViewById<View>(R.id.update) as Button
+        login = this.findViewById<View>(R.id.SendEmail) as Button
 
         register!!.setOnClickListener(this)
         login!!.setOnClickListener(this)

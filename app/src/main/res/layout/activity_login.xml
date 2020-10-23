@@ -95,7 +95,7 @@
             android:layout_height="16dp"
             android:layout_marginBottom="76dp"
             android:text="@string/RegisterNow"
-            android:textColor="?attr/tint"
+            android:textColor="?attr/tintColorOpp"
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

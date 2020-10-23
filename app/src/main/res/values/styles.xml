@@ -8,8 +8,11 @@
         <item name="colorAccent">@color/primaryLightColor</item>
         <item name="buttonColor">@color/primaryLightColor</item>
         <item name="backgroundColor">@color/primaryTextColor</item>
-        <item name="cardBackground">@color/primaryTextColor</item>
-        <item name="tint">@color/secondaryDarkTextColor</item>
+        <item name="cardBackground">@color/secondaryCardTextColor</item>
+        <item name="tintColor">@color/primaryTextColor</item>
+        <item name="tintColorForImage">@color/primaryDarkColor</item>
+        <item name="tintColorOpp">@color/secondaryDarkTextColor</item>
+        <item name="cardConnerColor">@color/primaryDarkColor</item>
     </style>
     <!-- Base application Dark theme. -->
     <style name="AppThemeDark" parent="Theme.AppCompat.DayNight.NoActionBar">
@@ -21,7 +24,10 @@
         <item name="buttonColor">@color/primaryLightColorD</item>
         <item name="backgroundColor">@color/primaryDarkBagColor</item>
         <item name="cardBackground">@color/secondaryDarkTextColor</item>
-        <item name="tint">@color/primaryTextColor</item>
+        <item name="tintColor">@color/primaryTextColor</item>
+        <item name="tintColorOpp">@color/primaryTextColor</item>
+        <item name="tintColorForImage">@color/primaryDarkColor</item>
+        <item name="cardConnerColor">@color/primaryDarkColorD</item>
     </style>
 
     <!-- Base application Light theme. -->
@@ -33,8 +39,11 @@
         <item name="colorAccent">@color/primaryLightColor</item>
         <item name="buttonColor">@color/primaryLightColor</item>
         <item name="backgroundColor">@color/primaryTextColor</item>
-        <item name="cardBackground">@color/primaryTextColor</item>
-        <item name="tint">@color/secondaryDarkTextColor</item>
+        <item name="cardBackground">@color/secondaryCardTextColor</item>
+        <item name="tintColor">@color/primaryTextColor</item>
+        <item name="tintColorForImage">@color/primaryTextColor</item>
+        <item name="tintColorOpp">@color/secondaryDarkTextColor</item>
+        <item name="cardConnerColor">@color/primaryDarkColor</item>
     </style>
     <!-- Base application Dark theme. -->
     <style name="AppThemeDarkActionBar" parent="Theme.AppCompat.DayNight">
@@ -46,7 +55,10 @@
         <item name="buttonColor">@color/primaryLightColorD</item>
         <item name="backgroundColor">@color/primaryDarkBagColor</item>
         <item name="cardBackground">@color/secondaryDarkTextColor</item>
-        <item name="tint">@color/primaryTextColor</item>
+        <item name="tintColor">@color/primaryTextColor</item>
+        <item name="tintColorOpp">@color/primaryTextColor</item>
+        <item name="tintColorForImage">@color/primaryTextColor</item>
+        <item name="cardConnerColor">@color/primaryDarkColor</item>
     </style>
 
 

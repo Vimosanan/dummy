@@ -80,13 +80,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 fragmentTransaction!!.replace(R.id.container_fragment, HomeFragment())
                 fragmentTransaction!!.commit()
             }
-            R.id.Register -> {
-                val intent = Intent(this,RegisterActivity::class.java)
+            R.id.Log_out -> {
+                sharedpre.loginSharedPrefState(false)
+                val intent = Intent(this,LauncherActivity::class.java)
                 startActivity(intent)
-            }
-            R.id.Login -> {
-                val intent = Intent(this,LoginActivity::class.java)
-                startActivity(intent)
+                this.finish();
             }
         }
         return false

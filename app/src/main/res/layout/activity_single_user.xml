@@ -19,5 +19,6 @@
             tools:layout_editor_absoluteX="4dp"
             app:itemIconSize="28dp"
             app:itemTextColor="@color/primaryTextColor"
-            app:itemBackground="@color/secondaryDarkColor" />
+            app:itemIconTint="#fff"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -4,10 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.cartrack.entitys.AppDatabase
@@ -15,7 +12,7 @@ import com.example.cartrack.entitys.UserOfApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class RegisterActivity : AppCompatActivity(),View.OnClickListener {
+class RegisterActivity : AppCompatActivity(),View.OnClickListener, AdapterView.OnItemSelectedListener {
     private var register: Button? = null
     private var reg_uname: EditText? = null
     private var phone_number:EditText? = null
@@ -24,17 +21,30 @@ class RegisterActivity : AppCompatActivity(),View.OnClickListener {
     private var confom_password:EditText? = null
     private var email:EditText? = null
     private var data:List<UserOfApp>? = null
+    private var spinner: Spinner? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         reg_uname = findViewById<View>(R.id.userName) as EditText
         phone_number = findViewById<View>(R.id.Up_Phone_number) as EditText
-        post_Address = findViewById<View>(R.id.Up_Post_Address) as EditText
+        //post_Address = findViewById<View>(R.id.Up_Post_Address) as EditText
+        spinner = findViewById<View>(R.id.Up_Post_AddressMain) as Spinner
         reg_password = findViewById<View>(R.id.Up_password) as EditText
         confom_password = findViewById<View>(R.id.Up_Confom_password) as EditText
         email = findViewById<View>(R.id.Up_email) as EditText
         register = findViewById<View>(R.id.update) as Button
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.country_arrays,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner!!.adapter = adapter
+        }
 
         register!!.setOnClickListener(this)
     }
@@ -79,9 +89,11 @@ class RegisterActivity : AppCompatActivity(),View.OnClickListener {
                             data?.forEach {
                                 println(it)
                             }
-                            if (data != null){
-                                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                            
+                            if (data != null) {
                                 startActivity(intent)
+                                val intent =
+                                    Intent(this@RegisterActivity, LoginActivity::class.java)
                             }
                             else{
                                 email?.error = "Email address is Wrong"
@@ -89,17 +101,23 @@ class RegisterActivity : AppCompatActivity(),View.OnClickListener {
                             }
                         }
 
-                    } else {
                         confom_password?.error = "Passwords are not Matched"
-                        confom_password?.requestFocus()
+                    } else {
+                    confom_password?.requestFocus()
                     }
                 }
             }
         }
     }
-   /* suspend fun saveData(loginN:String, phone_N:String, address:String, pass:String, email_ad:String){
-        val db = AppDatabase(this)
-        db.usersOfAppDao.insert(UserOfApp(loginN,phone_N,address,pass,email_ad))
-    }*/
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3
+: Long) {
+        TODO("Not yet implemented")
+        val spinner: Spinner = findViewById(R.id.Up_Post_AddressMain)
+        spinner.onItemSelectedListener = this
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
 }
 
