@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.example.cartrack
+package com.example.cartrack.home
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cartrack.R
 import com.example.cartrack.adapter.UserAdapter
 import com.example.cartrack.api.NetworkClient
 import com.example.cartrack.api.ApiInterface
@@ -31,7 +32,8 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.fragment_home, container,
+        val view: View = inflater.inflate(
+            R.layout.fragment_home, container,
             false)
         dateArray = ArrayList<User>()
         recyclerView = view.findViewById<View>(R.id.ListOfUser) as RecyclerView

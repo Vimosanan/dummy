@@ -15,10 +15,11 @@ abstract class ViewModelModule {
     @ViewModelKey(LoginViewModel::class)
     abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
 
-
+    @IntoMap
     @Binds
     @ViewModelKey(RegisterViewModel::class)
-    abstract fun bindRegisterViewModel(registerViewModel: RegisterViewModel): ViewModel
+    abstract fun bindRegisterViewModel(registerViewModel: RegisterViewModel):ViewModel
+
     @Binds
     abstract fun bindViewModelFactory(factory: AppViewModelFactory): ViewModelProvider.Factory
 

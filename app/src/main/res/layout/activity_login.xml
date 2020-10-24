@@ -38,7 +38,7 @@
                 android:background="@drawable/login_button_style"
                 android:textColor="#fff"
                 android:text="@string/Login"
-                android:onClick="@{viewmodel.login}"
+                android:onClick="@{viewmodel::login}"
                 app:layout_constraintBottom_toTopOf="@+id/registerNow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -120,7 +120,8 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="@{viewmodel::register}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

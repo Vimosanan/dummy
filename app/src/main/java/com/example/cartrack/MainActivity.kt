@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.cartrack.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
 
 
@@ -50,7 +51,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         fragmentManager = supportFragmentManager
         fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction!!.replace(R.id.container_fragment, HomeFragment())
+        fragmentTransaction!!.replace(R.id.container_fragment,
+            HomeFragment()
+        )
         fragmentTransaction!!.commit()
 
         val navMenu = navigationView?.menu
@@ -77,7 +80,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.home -> {
                 fragmentManager = supportFragmentManager
                 fragmentTransaction = fragmentManager!!.beginTransaction()
-                fragmentTransaction!!.replace(R.id.container_fragment, HomeFragment())
+                fragmentTransaction!!.replace(R.id.container_fragment,
+                    HomeFragment()
+                )
                 fragmentTransaction!!.commit()
             }
             R.id.Log_out -> {

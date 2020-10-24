@@ -29,4 +29,12 @@ class UserRepository @Inject constructor(
         }
         return result
     }
+    suspend fun registerUser(name:String,email:String,phone:String,country:String,passwordHash: String): MutableLiveData<Result<String>> {
+        val registerResult = MutableLiveData<Result<String>>()
+        withContext(Dispatchers.IO) {
+            val user = userDao.insert(AppUser(0, name, phone, country, passwordHash, email))
+            registerResult.postValue(Result.Success("Registration Success"))
+        }
+        return registerResult
+    }
 }

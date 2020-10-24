@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cartrack.entity.AppUser
+import com.example.cartrack.loadLoginSharedPrefState
 import com.example.cartrack.repository.UserRepository
-import com.example.cartrack.util.AppDatabase
 import com.example.cartrack.util.Result
 import com.example.cartrack.util.TextObservable
 import kotlinx.coroutines.launch
@@ -16,30 +16,41 @@ import java.security.MessageDigest
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-    private val db: AppDatabase,
-    private val sharedPref: SharedPreferences,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,private val sharedPref: SharedPreferences
 ) : ViewModel() {
     private var _result = MutableLiveData<Result<AppUser>>()
+    private var _error = MutableLiveData<String>()
+    val error:LiveData <String>
+        get() = _error
     val result: LiveData<Result<AppUser>>
         get() = _result
-
     fun login(view: View) {
         val email = emailObservable.text
         val password = passwordObservable.text
 
-        if (email.isNullOrBlank() || password.isNullOrBlank()) {
-
-        } else {
-            val passwordHash: String = hashAndSavePasswordHash(password)
-            viewModelScope.launch {
-                val result2 = userRepository.login(email, passwordHash)
-
-                _result.value = result2.value
-
+        when {
+            email.isNullOrBlank() -> {
+                _error.value = "email"
+            }
+            password.isNullOrBlank() -> {
+                _error.value = "password"
+            }
+            else -> {
+                val passwordHash: String = hashAndSavePasswordHash(password)
+                viewModelScope.launch {
+                    val result2 = userRepository.login(email, passwordHash)
+                    _result.value = result2.value
+                }
             }
         }
 
+    }
+   fun register(view: View) {
+       _error.value = "NavigateToRegister"
+   }
+    fun logedInOrNot(){
+        val subResult = sharedPref.loadLoginSharedPrefState()
+        if (subResult) _error.value = "LogedIn"
     }
 
     val emailObservable = TextObservable()

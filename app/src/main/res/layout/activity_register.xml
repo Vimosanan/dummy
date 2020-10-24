@@ -7,19 +7,18 @@
         <variable
             name="viewmodel"
             type="com.example.cartrack.register.RegisterViewModel" />
-
         <variable
             name="nameObservable"
             type="com.example.cartrack.util.TextObservable" />
         <variable
             name="emailObservable"
             type="com.example.cartrack.util.TextObservable" />
+        <variable
+            name="countryObservable"
+            type="com.example.cartrack.util.TextObservable" />
 
         <variable
             name="phoneObservable"
-            type="com.example.cartrack.util.TextObservable" />
-        <variable
-            name="addressObservable"
             type="com.example.cartrack.util.TextObservable" />
         <variable
             name="conformPasswordObservable"
@@ -160,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:text="@={passwordObservable}"/>
+                    android:text="@={passwordObservable.text}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -204,7 +203,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Up_Confom_passwordMain"
                 app:layout_constraintVertical_bias="0.0"
-                android:onClick="@={viewmodel.register}"/>
+                android:onClick="@{viewmodel::register}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

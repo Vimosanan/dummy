@@ -1,6 +1,7 @@
 package com.example.cartrack.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -14,23 +15,20 @@ import com.example.cartrack.app.CartrackApplication
 import com.example.cartrack.databinding.ActivityLoginBinding
 import com.example.cartrack.entity.AppUser
 import com.example.cartrack.util.Result
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity(){
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val appComponent = (applicationContext as CartrackApplication).appComponent
         appComponent.inject(this)
 
-//        sharedpre = SharedPref(this)
-//        if (sharedpre.loadLoginSharedPrefState()) {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-        //} else {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -42,20 +40,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding.emailObservable = loginViewModel.emailObservable
         binding.passwordObservable = loginViewModel.passwordObservable
         //}
-
+        errorObserveViewModel(binding)
         observeViewModel()
+
     }
-
-    override fun onClick(p0: View?) {
-        when (p0?.id) {
-            R.id.registerNow -> {
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
-            }
-
-        }
-    }
-
     private fun observeViewModel() {
         loginViewModel.result.observe(this, Observer {
             it?.let {
@@ -72,8 +60,37 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
+    fun errorObserveViewModel(binding: ActivityLoginBinding){
+        loginViewModel.error.observe(this, Observer {
+            it.let {
+                when (it) {
+                    "email" -> {
+                        binding.resetEmailMain.error = "Please Enter the Email"
+                        binding.resetEmailMain.requestFocus()
+                    }
+                    "password" -> {
+                        binding.LoginPasswordMain.error = "Please Enter the Password"
+                        binding.LoginPasswordMain.requestFocus()
+                    }
+                    "NavigateToRegister" -> {
+                        navigateToRegister()
+                    }
+                    "LogedIn"->{
+                        navigateToHome()
+                    }
+                    else -> {
+
+                    }
+                }
+            }
+        })
+    }
     private fun navigateToHome() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
+    }
+    private fun navigateToRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 }

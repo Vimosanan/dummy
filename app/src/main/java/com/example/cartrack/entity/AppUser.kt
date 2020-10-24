@@ -14,7 +14,7 @@ data class AppUser(
     @ColumnInfo(name = "user_phone")
     val userPhone: String?,
 
-    val address: String?,
+    val country: String?,
 
     val password: String,
 

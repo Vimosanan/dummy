@@ -31,10 +31,12 @@ class SharedPref(context: Context?) {
 
 }
 
+fun SharedPreferences.loadNightModeState(): Boolean {
+    return getBoolean("Night Mode", false)
+}
 fun SharedPreferences.setNightModeState(state: Boolean) {
     edit()
-        .putBoolean("LogedIn", state)
-        .apply()
+    .putBoolean("Night Mode", state).apply()
 }
 
 fun SharedPreferences.loadLoginSharedPrefState(): Boolean {
