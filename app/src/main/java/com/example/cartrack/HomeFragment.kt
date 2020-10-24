@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cartrack.adapter.UserAdapter
 import com.example.cartrack.api.NetworkClient
-import com.example.cartrack.api.RequestInterface
-import com.example.cartrack.response.Users
+import com.example.cartrack.api.ApiInterface
+import com.example.cartrack.response.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,19 +25,19 @@ import java.util.*
 class HomeFragment : Fragment() {
 
     private var recyclerView: RecyclerView? = null
-    private var dateArray: ArrayList<Users>? = null
-    private var requestInterface: RequestInterface? = null
+    private var dateArray: ArrayList<User>? = null
+    private var apiInterface: ApiInterface? = null
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container,
             false)
-        dateArray = ArrayList<Users>()
+        dateArray = ArrayList<User>()
         recyclerView = view.findViewById<View>(R.id.ListOfUser) as RecyclerView
         recyclerView!!.setHasFixedSize(true)
         recyclerView!!.layoutManager = LinearLayoutManager(activity)
-        requestInterface = NetworkClient.buildService(RequestInterface::class.java)
+        apiInterface = NetworkClient.buildService(ApiInterface::class.java)
         val cm =
             requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo
@@ -49,9 +49,9 @@ class HomeFragment : Fragment() {
     }
     private fun lodeRecyclerView() {
         /*** Get Articles for list  */
-        val call = requestInterface!!.getPostJson()
-        call.enqueue(object : Callback<List<Users>>{
-            override fun onResponse(call: Call<List<Users>>, response: Response<List<Users>>) {
+        val call = apiInterface!!.getPostJson()
+        call.enqueue(object : Callback<List<User>>{
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 response.body()
                 if (response.isSuccessful){
                     val userAdapter = UserAdapter(response.body(),context)
@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
                   //  Toast.makeText(activity, "${response.body()?.size.toString()}", Toast.LENGTH_SHORT).show()
                 }
             }
-            override fun onFailure(call: Call<List<Users>>, t: Throwable) {
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 Toast.makeText(activity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
         })

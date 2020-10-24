@@ -10,10 +10,10 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cartrack.R
 import com.example.cartrack.SingleUserActivity
-import com.example.cartrack.response.Users
+import com.example.cartrack.response.User
 
 
-class UserAdapter(private val nameList: List<Users>?, private val context: Context?) :
+class UserAdapter(private val nameList: List<User>?, private val context: Context?) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     private val VIEW_TYPE_LOADING = 0
     private val VIEW_TYPE_NORMAL = 1
@@ -27,8 +27,14 @@ class UserAdapter(private val nameList: List<Users>?, private val context: Conte
         )
         holder.cartView?.setOnClickListener(View.OnClickListener {
             val idd = this.nameList[position].id
+            val lat = this.nameList[position].address?.geo?.lat
+            val lng = this.nameList[position].address?.geo?.lng
+            val addressName = this.nameList[position].address?.street
             val intent = Intent(context, SingleUserActivity::class.java)
             intent.putExtra("ID", idd)
+            intent.putExtra("lat", lat )
+            intent.putExtra("lng", lng)
+            intent.putExtra("addressName", addressName)
             context?.startActivity(intent)
         })
     }

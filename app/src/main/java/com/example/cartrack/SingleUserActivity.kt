@@ -1,5 +1,6 @@
 package com.example.cartrack
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentManager
@@ -11,7 +12,10 @@ class SingleUserActivity : BaseActivity() {
     private var fragmentManager: FragmentManager? = null
     private var fragmentTransaction: FragmentTransaction? = null
     private var iD : Int = 0
-    private val args = Bundle()
+    private val args= Bundle()
+    private var lat:String? = null
+    private var lng:String? = null
+    private var addressName:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         setDarkAction()
         super.onCreate(savedInstanceState)
@@ -26,6 +30,10 @@ class SingleUserActivity : BaseActivity() {
         /*** Get data from Adapter  */
         val intent = intent
         iD = intent.getIntExtra("ID", 0)
+        lat = intent.getStringExtra("lat")
+        lng = intent.getStringExtra("lng")
+        addressName = intent.getStringExtra("addressName")
+
         var navigationView = findViewById<View>(R.id.BottomNavigation) as BottomNavigationView
         navigationView.bringToFront()
 
@@ -50,13 +58,18 @@ class SingleUserActivity : BaseActivity() {
                     fragmentTransaction!!.commit()
                 }
                 R.id.Loaction -> {
-                    val fragment2 = MapViewFragment()
-                    fragment2.arguments = args
-                    actionbar.title = "User Location"
-                    fragmentManager = supportFragmentManager
-                    fragmentTransaction = fragmentManager!!.beginTransaction()
-                    fragmentTransaction!!.replace(R.id.container_fragment, fragment2)
-                    fragmentTransaction!!.commit()
+                    val intent = Intent(this, MapViewActivity::class.java)
+                    intent.putExtra("lat", lat)
+                    intent.putExtra("lng", lng)
+                    intent.putExtra("addressName", addressName)
+                    startActivity(intent)
+//                    val fragment2 = MapViewFragment()
+//                    fragment2.arguments = args
+//                    actionbar.title = "User Location"
+//                    fragmentManager = supportFragmentManager
+//                    fragmentTransaction = fragmentManager!!.beginTransaction()
+//                    fragmentTransaction!!.replace(R.id.container_fragment, fragment2)
+//                    fragmentTransaction!!.commit()
                 }
                 R.id.company -> {
                     val fragment3 = UserComapnyFragment()

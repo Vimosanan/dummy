@@ -11,8 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cartrack.api.NetworkClient
-import com.example.cartrack.api.RequestInterface
-import com.example.cartrack.response.Users
+import com.example.cartrack.api.ApiInterface
+import com.example.cartrack.response.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +28,7 @@ class UserDetailsFragment : Fragment() {
     private var user_Suite: TextView? =null
     private var user_City: TextView? =null
     private var user_Zipcode: TextView? =null
-    private var requestInterface: RequestInterface? = null
+    private var apiInterface: ApiInterface? = null
     @SuppressLint("CutPasteId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +46,7 @@ class UserDetailsFragment : Fragment() {
         user_Zipcode = view.findViewById<View>(R.id.user_Zipcode) as TextView?
 
         key = this.arguments?.getInt("Key")
-        requestInterface = NetworkClient.buildService(RequestInterface::class.java)
+        apiInterface = NetworkClient.buildService(ApiInterface::class.java)
         val cm =
             requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo
@@ -58,9 +58,9 @@ class UserDetailsFragment : Fragment() {
 
     }
     private fun getSingleUserData(){
-        val call = requestInterface!!.singleUser(key!!)
-        call.enqueue(object : Callback<Users> {
-            override fun onResponse(call: Call<Users>, response: Response<Users>) {
+        val call = apiInterface!!.singleUser(key!!)
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful){
                     user_Name?.text = response.body()?.name.toString()
                     user_username?.text = response.body()?.username.toString()
@@ -74,7 +74,7 @@ class UserDetailsFragment : Fragment() {
                     //Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
                 }
             }
-            override fun onFailure(call: Call<Users>, t: Throwable) {
+            override fun onFailure(call: Call<User>, t: Throwable) {
                 TODO("Not yet implemented")
                 Toast.makeText(activity, "${t.message}", Toast.LENGTH_SHORT).show()
             }

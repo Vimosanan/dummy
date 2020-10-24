@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.example.cartrack.api.NetworkClient
-import com.example.cartrack.api.RequestInterface
-import com.example.cartrack.response.Users
+import com.example.cartrack.api.ApiInterface
+import com.example.cartrack.response.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,7 +21,7 @@ class UserComapnyFragment : Fragment() {
     private var company_name: TextView? =null
     private var catchPhrase: TextView? =null
     private var bS_Company: TextView? =null
-    private var requestInterface: RequestInterface? = null
+    private var apiInterface: ApiInterface? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +34,7 @@ class UserComapnyFragment : Fragment() {
 
         key = this.arguments?.getInt("Key")
 
-        requestInterface = NetworkClient.buildService(RequestInterface::class.java)
+        apiInterface = NetworkClient.buildService(ApiInterface::class.java)
         val cm =
             requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo
@@ -45,9 +45,9 @@ class UserComapnyFragment : Fragment() {
         return view
     }
     private fun getSingleUserData(){
-        val call = requestInterface!!.singleUser(key!!)
-        call.enqueue(object : Callback<Users> {
-            override fun onResponse(call: Call<Users>, response: Response<Users>) {
+        val call = apiInterface!!.singleUser(key!!)
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful){
                     company_name?.text = response.body()?.company?.name.toString()
                     catchPhrase?.text = response.body()?.company?.catchPhrase.toString()
@@ -55,7 +55,7 @@ class UserComapnyFragment : Fragment() {
                     //Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show()
                 }
             }
-            override fun onFailure(call: Call<Users>, t: Throwable) {
+            override fun onFailure(call: Call<User>, t: Throwable) {
                 TODO("Not yet implemented")
                 Toast.makeText(activity, "${t.message}", Toast.LENGTH_SHORT).show()
             }
