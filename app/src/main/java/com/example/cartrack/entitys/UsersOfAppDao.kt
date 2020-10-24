@@ -15,7 +15,7 @@ interface UsersOfAppDao {
     @Query("SELECT * FROM Users_App WHERE Email = :email AND Password = :password LIMIT 1")
     abstract fun getSingleUser(email: String, password: String?): UserOfApp?
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(users_App: UserOfApp): Long
 
     @Update(onConflict = OnConflictStrategy.IGNORE)

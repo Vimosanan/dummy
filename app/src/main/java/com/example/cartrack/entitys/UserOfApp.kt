@@ -9,7 +9,7 @@ import com.example.cartrack.entitys.UserOfApp.Companion.TABLE_NAME
     tableName = TABLE_NAME,
     indices = [Index(value = [Email], unique = true)])
 data class UserOfApp(
-    @PrimaryKey val UID:Int,
+    @PrimaryKey(autoGenerate = true) val UID:Int = 0,
     @ColumnInfo(name = "User_Name") val user_name: String?,
     @ColumnInfo(name = "Phone") val user_phone: String?,
     @ColumnInfo(name = "Address") val user_address: String?,
