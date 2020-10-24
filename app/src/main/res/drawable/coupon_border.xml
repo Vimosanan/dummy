@@ -3,13 +3,13 @@
     android:shape="oval"
     android:useLevel="false">
     <stroke
-        android:width="2dip"
-        android:color="#a9a9a9"/>
+        android:width="4dip"
+        android:color="@color/primaryLightColor"/>
     <size
-        android:height="100dp"
+        android:height="70dp"
         android:width="100dp" />
     <gradient
-        android:centerColor="?attr/tintColor"
-        android:startColor="?attr/cardConnerColor"
-        android:endColor="?attr/cardConnerColor"/>
+        android:centerColor="?attr/cardConnerColor"
+        android:startColor="?attr/tintColor"
+        android:endColor="?attr/tintColor"/>
 </shape>

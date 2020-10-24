@@ -62,7 +62,7 @@ class RegisterActivity : AppCompatActivity(),View.OnClickListener, AdapterView.O
                 val pass: String = reg_password?.text.toString()
                 val phone_N: String = phone_number?.text.toString()
                 val email_ad: String = email?.text.toString()
-                val address: String = post_Address?.text.toString()
+                val address: String = spinner.toString();
                 val confP: String = confom_password?.text.toString()
                 if (loginN.isEmpty()) {
                     reg_uname?.error = "Please Enter the Name"
