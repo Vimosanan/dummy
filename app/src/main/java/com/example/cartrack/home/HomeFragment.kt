@@ -3,6 +3,7 @@
 package com.example.cartrack.home
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +13,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cartrack.R
@@ -22,11 +22,8 @@ import com.example.cartrack.api.ApiInterface
 import com.example.cartrack.app.CartrackApplication
 import com.example.cartrack.databinding.FragmentHomeBinding
 import com.example.cartrack.response.User
-import com.example.cartrack.util.Result
+import com.example.cartrack.ui.SingleUserActivity
 import com.example.cartrack.util.Status
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 
@@ -40,12 +37,15 @@ class HomeFragment : Fragment() {
     private var fragmentHomeBinding: FragmentHomeBinding? = null
     private lateinit var adapter: UserAdapter
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view: View = inflater.inflate(
             R.layout.fragment_home, container,
-            false)
+            false
+        )
         val appComponent = (activity?.applicationContext as CartrackApplication).appComponent
         appComponent.inject(this)
 
@@ -80,8 +80,7 @@ class HomeFragment : Fragment() {
                         Status.SUCCESS -> {
                             recyclerView!!.visibility = View.VISIBLE
                             //progressBar.visibility = View.GONE
-                            resource.data?.let {
-                                    users -> retrieveList(users) }
+                            resource.data?.let { users -> retrieveList(users) }
                         }
                         Status.ERROR -> {
                             recyclerView!!.visibility = View.VISIBLE
@@ -97,9 +96,26 @@ class HomeFragment : Fragment() {
             })
         }
     }
+
     private fun retrieveList(users: List<User>) {
-        adapter = UserAdapter(users,context)
+        adapter = UserAdapter(users, onUserItemSelected)
         recyclerView!!.adapter = adapter
+    }
+
+    private val onUserItemSelected = object : UserAdapter.Callback {
+        override fun onItemClicked(user: User) {
+            val id = user.id
+            val lat = user.address.geo.lat
+            val lng = user.address.geo.lng
+            val addressName = user.address.street
+
+            startActivity(Intent(requireContext(), SingleUserActivity::class.java).apply {
+                putExtra("ID", id)
+                putExtra("lat", lat)
+                putExtra("lng", lng)
+                putExtra("addressName", addressName)
+            })
+        }
     }
 }
 
