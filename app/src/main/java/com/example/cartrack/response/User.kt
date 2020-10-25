@@ -3,37 +3,56 @@ package com.example.cartrack.response
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class User {
-    @SerializedName("id")
-    @Expose
-    var id: Int? = null
+//class User {
+//    @SerializedName("id")
+//    @Expose
+//    var id: Int? = null
+//
+//    @SerializedName("name")
+//    @Expose
+//    var name: String? = null
+//
+//    @SerializedName("username")
+//    @Expose
+//    var username: String? = null
+//
+//    @SerializedName("email")
+//    @Expose
+//    var email: String? = null
+//
+//    @SerializedName("address")
+//    @Expose
+//    var address: Address? = null
+//
+//    @SerializedName("phone")
+//    @Expose
+//    var phone: String? = null
+//
+//    @SerializedName("website")
+//    @Expose
+//    var website: String? = null
+//
+//    @SerializedName("company")
+//    @Expose
+//    var company: Company? = null
+//
+//}
 
-    @SerializedName("name")
-    @Expose
-    var name: String? = null
+data class User(
 
-    @SerializedName("username")
-    @Expose
-    var username: String? = null
+    var id: Int,
 
-    @SerializedName("email")
-    @Expose
-    var email: String? = null
+    var name: String,
 
-    @SerializedName("address")
-    @Expose
-    var address: Address? = null
+    var username: String,
 
-    @SerializedName("phone")
-    @Expose
-    var phone: String? = null
+    var email: String,
 
-    @SerializedName("website")
-    @Expose
-    var website: String? = null
+    var address: Address,
 
-    @SerializedName("company")
-    @Expose
-    var company: Company? = null
+    var phone: String,
 
-}
+    var website: String,
+
+    var company: Company
+)

@@ -1,21 +1,16 @@
 package com.example.cartrack.login
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.cartrack.MainActivity
-import com.example.cartrack.R
+import com.example.cartrack.ui.MainActivity
 import com.example.cartrack.register.RegisterActivity
 import com.example.cartrack.app.CartrackApplication
 import com.example.cartrack.databinding.ActivityLoginBinding
-import com.example.cartrack.entity.AppUser
 import com.example.cartrack.util.Result
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity(){
@@ -23,7 +18,6 @@ class LoginActivity : AppCompatActivity(){
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var loginViewModel: LoginViewModel
-    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val appComponent = (applicationContext as CartrackApplication).appComponent
@@ -32,6 +26,7 @@ class LoginActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         loginViewModel =
             ViewModelProvider(this, viewModelFactory).get(LoginViewModel::class.java)

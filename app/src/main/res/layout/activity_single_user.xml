@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SingleUserActivity"
+    tools:context=".ui.SingleUserActivity"
     android:background="?attr/backgroundColor">
         <include android:layout_height="match_parent"
             android:layout_width="match_parent"

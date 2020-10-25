@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cartrack.R
-import com.example.cartrack.SingleUserActivity
+import com.example.cartrack.ui.SingleUserActivity
 import com.example.cartrack.response.User
 
 

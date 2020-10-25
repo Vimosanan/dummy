@@ -7,16 +7,12 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.cartrack.MainActivity
 import com.example.cartrack.R
 import com.example.cartrack.app.CartrackApplication
 import com.example.cartrack.databinding.ActivityLoginBinding
 import com.example.cartrack.databinding.ActivityRegisterBinding
-import com.example.cartrack.util.AppDatabase
-import com.example.cartrack.entity.AppUser
 import com.example.cartrack.login.LoginActivity
 import com.example.cartrack.util.Result
-import java.security.MessageDigest
 import javax.inject.Inject
 
 class RegisterActivity : AppCompatActivity(),
@@ -122,6 +118,8 @@ class RegisterActivity : AppCompatActivity(),
     override fun onItemSelected(parent: AdapterView<*>?, p1: View?, pos: Int, p3: Long) {
         // An item was selected. You can retrieve the selected item using
         country = parent?.getItemAtPosition(pos).toString()
+//        Toast.makeText(this,country,Toast.LENGTH_SHORT).show()
+        registerViewModel.getCountry(country!!)
     }
 }
 

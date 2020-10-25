@@ -1,10 +1,14 @@
-package com.example.cartrack
+package com.example.cartrack.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.cartrack.R
+import com.example.cartrack.singleUser.MapViewActivity
+import com.example.cartrack.singleUser.UserComapnyFragment
+import com.example.cartrack.singleUser.UserDetailsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -49,7 +53,8 @@ class SingleUserActivity : BaseActivity() {
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Personal -> {
-                    val fragment1 = UserDetailsFragment()
+                    val fragment1 =
+                        UserDetailsFragment()
                     fragment1.arguments = args
                     actionbar.title = "User Profile"
                     fragmentManager = supportFragmentManager
@@ -63,16 +68,10 @@ class SingleUserActivity : BaseActivity() {
                     intent.putExtra("lng", lng)
                     intent.putExtra("addressName", addressName)
                     startActivity(intent)
-//                    val fragment2 = MapViewFragment()
-//                    fragment2.arguments = args
-//                    actionbar.title = "User Location"
-//                    fragmentManager = supportFragmentManager
-//                    fragmentTransaction = fragmentManager!!.beginTransaction()
-//                    fragmentTransaction!!.replace(R.id.container_fragment, fragment2)
-//                    fragmentTransaction!!.commit()
                 }
                 R.id.company -> {
-                    val fragment3 = UserComapnyFragment()
+                    val fragment3 =
+                        UserComapnyFragment()
                     fragment3.arguments = args
                     actionbar.title = "User Company"
                     fragmentManager = supportFragmentManager

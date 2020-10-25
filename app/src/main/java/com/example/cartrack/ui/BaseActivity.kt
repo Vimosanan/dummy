@@ -1,11 +1,13 @@
-package com.example.cartrack
+package com.example.cartrack.ui
 
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cartrack.R
+import com.example.cartrack.SharedPref
 
 open class BaseActivity : AppCompatActivity(){
-    private lateinit var sharedPre:SharedPref
+    private lateinit var sharedPre: SharedPref
     override fun onCreate(
         savedInstanceState: Bundle?,
         persistentState: PersistableBundle?

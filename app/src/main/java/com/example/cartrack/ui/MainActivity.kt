@@ -1,4 +1,4 @@
-package com.example.cartrack
+package com.example.cartrack.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,9 +10,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.cartrack.R
+import com.example.cartrack.SharedPref
 import com.example.cartrack.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
-
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var drawerLayout: DrawerLayout? = null
@@ -23,7 +24,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private var fragmentTransaction: FragmentTransaction? = null
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     private var xyz: Switch? = null
-    private lateinit var sharedpre:SharedPref
+    private lateinit var sharedpre: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedpre = SharedPref(this)
@@ -51,7 +52,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         fragmentManager = supportFragmentManager
         fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction!!.replace(R.id.container_fragment,
+        fragmentTransaction!!.replace(
+            R.id.container_fragment,
             HomeFragment()
         )
         fragmentTransaction!!.commit()
@@ -80,14 +82,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.home -> {
                 fragmentManager = supportFragmentManager
                 fragmentTransaction = fragmentManager!!.beginTransaction()
-                fragmentTransaction!!.replace(R.id.container_fragment,
+                fragmentTransaction!!.replace(
+                    R.id.container_fragment,
                     HomeFragment()
                 )
                 fragmentTransaction!!.commit()
             }
             R.id.Log_out -> {
                 sharedpre.loginSharedPrefState(false)
-                val intent = Intent(this,LauncherActivity::class.java)
+                val intent = Intent(this,
+                    LauncherActivity::class.java)
                 startActivity(intent)
                 this.finish();
             }
@@ -96,7 +100,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     }
     fun restartApp(){
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 }

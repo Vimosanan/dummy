@@ -20,7 +20,7 @@ class RegisterViewModel @Inject constructor(private val userRepository: UserRepo
         get() = _error
     val result: LiveData<Result<String>>
         get() = _result
-    var country = String
+    var country: String? = null
 
     fun register(view: View) {
         val name = nameObservable.text
@@ -75,5 +75,9 @@ class RegisterViewModel @Inject constructor(private val userRepository: UserRepo
             sb.append(String.format("%02X", b))
         }
         return sb.toString()
+    }
+
+    fun getCountry(country:String){
+        this.country = country
     }
 }

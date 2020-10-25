@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeLite"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MapViewActivity"></activity>
+        <activity android:name=".singleUser.MapViewActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -29,9 +29,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/maps_api_key" />
 
-        <activity android:name=".SingleUserActivity" />
+        <activity android:name=".ui.SingleUserActivity" />
         <activity
-            android:name=".LauncherActivity"
+            android:name=".ui.LauncherActivity"
             android:theme="@style/AppThemeDark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,17 +42,17 @@
         <activity
             android:name=".login.LoginActivity"
             android:noHistory="true"
-            android:parentActivityName=".LauncherActivity"
+            android:parentActivityName=".ui.LauncherActivity"
             android:theme="@style/AppThemeDark"
             tools:ignore="UnusedAttribute" />
         <activity
             android:name=".register.RegisterActivity"
             android:label="@string/Welcome_to_Registration"
-            android:parentActivityName=".LauncherActivity"
+            android:parentActivityName=".ui.LauncherActivity"
             android:theme="@style/AppThemeDark"
             tools:ignore="UnusedAttribute" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:configChanges="uiMode">
         </activity>
     </application>

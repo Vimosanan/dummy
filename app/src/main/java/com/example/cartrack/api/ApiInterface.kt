@@ -9,9 +9,9 @@ import retrofit2.http.Path
 interface ApiInterface {
 
     @GET("users")
-    fun getPostJson(): Call<List<User>>
+    suspend fun getPostJson(): List<User>
 
 
     @GET("users/{id}")
-    fun singleUser(@Path("id") id: Int): Call<User>
+    suspend fun singleUser(@Path("id") id: Int): User
 }
