@@ -8,21 +8,29 @@ import com.example.cartrack.response.User
 
 
 class UserAdapter(
-    private val nameList: List<User>?, private val userItemSelectedCallback: Callback?
+    private val nameList: List<User>, private val userItemSelectedCallback: Callback?
 ) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     private val VIEW_TYPE_LOADING = 0
     private val VIEW_TYPE_NORMAL = 1
     private val isLoaderVisible = false
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+
+        return with(CartLayoutBinding.inflate(layoutInflater, parent, false)) {
+            UserViewHolder(this)
+        }
+    }
+
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val user = this.nameList!![position]
-        holder.bindData(user)
-
-
+        nameList[position].also {
+            holder.bindData(it)
+        }
     }
 
     override fun getItemCount(): Int {
-        return nameList!!.size
+        return nameList.size
     }
 
     open inner class UserViewHolder(private val binding: CartLayoutBinding) :
@@ -32,14 +40,6 @@ class UserAdapter(
             binding.clickCard.setOnClickListener {
                 userItemSelectedCallback?.onItemClicked(user)
             }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-
-        return with(CartLayoutBinding.inflate(layoutInflater, parent, false)) {
-            UserViewHolder(this)
         }
     }
 

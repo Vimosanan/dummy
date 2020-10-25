@@ -98,23 +98,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun retrieveList(users: List<User>) {
-        adapter = UserAdapter(users, onUserItemSelected)
-        recyclerView!!.adapter = adapter
+        UserAdapter(users, onUserItemSelected).apply {
+            recyclerView!!.adapter = this
+        }
     }
 
     private val onUserItemSelected = object : UserAdapter.Callback {
         override fun onItemClicked(user: User) {
-            val id = user.id
-            val lat = user.address.geo.lat
-            val lng = user.address.geo.lng
-            val addressName = user.address.street
+            with(user) {
+                val id = id
+                val lat = address.geo.lat
+                val lng = address.geo.lng
+                val addressName = address.street
 
-            startActivity(Intent(requireContext(), SingleUserActivity::class.java).apply {
-                putExtra("ID", id)
-                putExtra("lat", lat)
-                putExtra("lng", lng)
-                putExtra("addressName", addressName)
-            })
+                startActivity(Intent(requireContext(), SingleUserActivity::class.java).apply {
+                    putExtra("ID", id)
+                    putExtra("lat", lat)
+                    putExtra("lng", lng)
+                    putExtra("addressName", addressName)
+                })
+            }
         }
     }
 }
