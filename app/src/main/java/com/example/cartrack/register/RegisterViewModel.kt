@@ -1,11 +1,13 @@
 package com.example.cartrack.register
 
+import android.content.SharedPreferences
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cartrack.entity.AppUser
+import com.example.cartrack.loadLoginSharedPrefState
 import com.example.cartrack.repository.UserRepository
 import com.example.cartrack.util.Result
 import com.example.cartrack.util.TextObservable
@@ -13,7 +15,9 @@ import kotlinx.coroutines.launch
 import java.security.MessageDigest
 import javax.inject.Inject
 
-class RegisterViewModel @Inject constructor(private val userRepository: UserRepository):ViewModel() {
+class RegisterViewModel @Inject constructor(
+    private val userRepository: UserRepository,
+    private val sharedPref: SharedPreferences):ViewModel() {
     private var _result = MutableLiveData<Result<String>>()
     private var _error = MutableLiveData<String>()
     val error: LiveData<String>
@@ -79,5 +83,9 @@ class RegisterViewModel @Inject constructor(private val userRepository: UserRepo
 
     fun getCountry(country:String){
         this.country = country
+    }
+    fun logedInOrNot(): Boolean {
+        val subResult = sharedPref.loadLoginSharedPrefState()
+        return subResult
     }
 }

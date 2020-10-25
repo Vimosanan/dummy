@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.cartrack.dao.AppUserDao
 import com.example.cartrack.entity.AppUser
 import com.example.cartrack.loginSharedPrefState
+import com.example.cartrack.response.User
 import com.example.cartrack.util.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -37,4 +38,8 @@ class UserRepository @Inject constructor(
         }
         return registerResult
     }
+
+//    suspend fun getAlluser(): List<AppUser> {
+//        return userDao.allUserUsers
+//    }
 }

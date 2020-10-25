@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <permission
         android:name="com.example.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
@@ -20,7 +21,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeLite"
         android:usesCleartextTraffic="true">
-        <activity android:name=".singleUser.MapViewActivity"></activity>
+        <activity android:name=".app.InitActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".singleUser.MapViewActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -33,28 +41,20 @@
         <activity
             android:name=".ui.LauncherActivity"
             android:theme="@style/AppThemeDark">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".login.LoginActivity"
             android:noHistory="true"
             android:parentActivityName=".ui.LauncherActivity"
-            android:theme="@style/AppThemeDark"
-            tools:ignore="UnusedAttribute" />
+            android:theme="@style/AppThemeDark"/>
         <activity
             android:name=".register.RegisterActivity"
             android:label="@string/Welcome_to_Registration"
             android:parentActivityName=".ui.LauncherActivity"
-            android:theme="@style/AppThemeDark"
-            tools:ignore="UnusedAttribute" />
+            android:theme="@style/AppThemeDark" />
         <activity
             android:name=".ui.MainActivity"
-            android:configChanges="uiMode">
-        </activity>
+            android:configChanges="uiMode"/>
     </application>
 
 </manifest>

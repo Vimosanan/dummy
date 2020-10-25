@@ -19,6 +19,7 @@ class LoginActivity : AppCompatActivity(){
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var loginViewModel: LoginViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val appComponent = (applicationContext as CartrackApplication).appComponent
         appComponent.inject(this)
@@ -26,6 +27,7 @@ class LoginActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
         loginViewModel =
@@ -37,6 +39,11 @@ class LoginActivity : AppCompatActivity(){
         //}
         errorObserveViewModel(binding)
         observeViewModel()
+
+        val logedIn = loginViewModel.logedInOrNot()
+        if (logedIn){
+            navigateToHome()
+        }
 
     }
     private fun observeViewModel() {
@@ -70,9 +77,6 @@ class LoginActivity : AppCompatActivity(){
                     "NavigateToRegister" -> {
                         navigateToRegister()
                     }
-                    "LogedIn"->{
-                        navigateToHome()
-                    }
                     else -> {
 
                     }
@@ -81,7 +85,9 @@ class LoginActivity : AppCompatActivity(){
         })
     }
     private fun navigateToHome() {
-        startActivity(Intent(this, MainActivity::class.java))
+        var intent = Intent(this, MainActivity::class.java)
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent)
         finish()
     }
     private fun navigateToRegister() {

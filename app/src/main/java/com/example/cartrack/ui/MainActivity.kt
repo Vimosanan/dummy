@@ -10,12 +10,21 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import com.example.cartrack.R
 import com.example.cartrack.SharedPref
+import com.example.cartrack.app.CartrackApplication
+import com.example.cartrack.databinding.ActivityLauncherBinding
 import com.example.cartrack.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var sharedViewModel: SharedViewModel
+
     private var drawerLayout: DrawerLayout? = null
     private var actionBarDrawerToggle: ActionBarDrawerToggle? = null
     private var toolbar: Toolbar? = null
@@ -27,9 +36,23 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private lateinit var sharedpre: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val appComponent = (applicationContext as CartrackApplication).appComponent
+        appComponent.inject(this)
+
+        super.onCreate(savedInstanceState)
+        val binding = ActivityLauncherBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        sharedViewModel =
+            ViewModelProvider(this, viewModelFactory).get(SharedViewModel::class.java)
+
+        binding.viewmodel = sharedViewModel
+
+
         sharedpre = SharedPref(this)
         setDark()
-        super.onCreate(savedInstanceState)
+       // super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -89,11 +112,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 fragmentTransaction!!.commit()
             }
             R.id.Log_out -> {
-                sharedpre.loginSharedPrefState(false)
+                sharedViewModel.setLogout()
                 val intent = Intent(this,
                     LauncherActivity::class.java)
                 startActivity(intent)
-                this.finish();
+                finish();
             }
         }
         return false

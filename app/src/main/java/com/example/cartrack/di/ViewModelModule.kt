@@ -6,6 +6,7 @@ import com.example.cartrack.home.HomeViewModel
 import com.example.cartrack.login.LoginViewModel
 import com.example.cartrack.register.RegisterViewModel
 import com.example.cartrack.singleUser.UserDetailsViewModel
+import com.example.cartrack.ui.SharedViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -31,6 +32,11 @@ abstract class ViewModelModule {
     @Binds
     @ViewModelKey(UserDetailsViewModel::class)
     abstract fun bindUserDetailsViewModel(userDetailsViewModel: UserDetailsViewModel):ViewModel
+
+    @IntoMap
+    @Binds
+    @ViewModelKey(SharedViewModel::class)
+    abstract fun bindSharedViewModel(sharedViewModel: SharedViewModel):ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: AppViewModelFactory): ViewModelProvider.Factory

@@ -12,6 +12,7 @@ import com.example.cartrack.app.CartrackApplication
 import com.example.cartrack.databinding.ActivityLoginBinding
 import com.example.cartrack.databinding.ActivityRegisterBinding
 import com.example.cartrack.login.LoginActivity
+import com.example.cartrack.ui.MainActivity
 import com.example.cartrack.util.Result
 import javax.inject.Inject
 
@@ -55,6 +56,11 @@ class RegisterActivity : AppCompatActivity(),
         spinner?.onItemSelectedListener = this
 
         observeViewModel()
+
+        val logedIn = registerViewModel.logedInOrNot()
+        if (logedIn){
+            navigateToHome()
+        }
 
     }
     private fun observeViewModel() {
@@ -120,6 +126,10 @@ class RegisterActivity : AppCompatActivity(),
         country = parent?.getItemAtPosition(pos).toString()
 //        Toast.makeText(this,country,Toast.LENGTH_SHORT).show()
         registerViewModel.getCountry(country!!)
+    }
+    private fun navigateToHome() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }
 

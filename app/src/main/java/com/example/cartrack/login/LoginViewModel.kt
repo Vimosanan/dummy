@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagedList
 import com.example.cartrack.entity.AppUser
 import com.example.cartrack.loadLoginSharedPrefState
 import com.example.cartrack.repository.UserRepository
@@ -16,8 +17,7 @@ import java.security.MessageDigest
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-    private val userRepository: UserRepository,private val sharedPref: SharedPreferences
-) : ViewModel() {
+    private val userRepository: UserRepository,private val sharedPref: SharedPreferences) : ViewModel() {
     private var _result = MutableLiveData<Result<AppUser>>()
     private var _error = MutableLiveData<String>()
     val error:LiveData <String>
@@ -45,18 +45,19 @@ class LoginViewModel @Inject constructor(
         }
 
     }
-   fun register(view: View) {
+    fun register(view: View) {
+       //val concertList: LiveData<PagedList<AppUser>> = userRepository.getAlluser().toLiveData(pageSize = 50)
        _error.value = "NavigateToRegister"
    }
-    fun logedInOrNot(){
+    fun logedInOrNot(): Boolean {
         val subResult = sharedPref.loadLoginSharedPrefState()
-        if (subResult) _error.value = "LogedIn"
+        return subResult
     }
 
     val emailObservable = TextObservable()
     val passwordObservable = TextObservable()
 
-    private fun hashAndSavePasswordHash(clearPassword: String): String {
+    fun hashAndSavePasswordHash(clearPassword: String): String {
         val digest = MessageDigest.getInstance("SHA-1")
         val result = digest.digest(clearPassword.toByteArray(Charsets.UTF_8))
         val sb = StringBuilder()

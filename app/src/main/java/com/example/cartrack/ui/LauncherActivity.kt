@@ -1,36 +1,55 @@
 package com.example.cartrack.ui
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.lifecycle.ViewModelProvider
 import com.example.cartrack.R
 import com.example.cartrack.SharedPref
+import com.example.cartrack.app.CartrackApplication
+import com.example.cartrack.databinding.ActivityLauncherBinding
+import com.example.cartrack.databinding.ActivityLoginBinding
+import com.example.cartrack.loadLoginSharedPrefState
 import com.example.cartrack.login.LoginActivity
+import com.example.cartrack.login.LoginViewModel
 import com.example.cartrack.register.RegisterActivity
+import javax.inject.Inject
 
-class LauncherActivity : AppCompatActivity(),View.OnClickListener {
+class LauncherActivity : AppCompatActivity()   ,View.OnClickListener {
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var sharedViewModel: SharedViewModel
+
     private var register: Button? = null
     private var login: Button? = null
-    private lateinit var sharedpre: SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launcher)
+        val appComponent = (applicationContext as CartrackApplication).appComponent
+        appComponent.inject(this)
 
-        sharedpre = SharedPref(this)
-        if (sharedpre.loadLoginSharedPrefState()){
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            this.finish();
-        }
+        super.onCreate(savedInstanceState)
+        val binding = ActivityLauncherBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        sharedViewModel =
+            ViewModelProvider(this, viewModelFactory).get(SharedViewModel::class.java)
+
+        binding.viewmodel = sharedViewModel
+
 
         register = findViewById(R.id.update)
         login = findViewById(R.id.SendEmail)
 
         register!!.setOnClickListener(this)
         login!!.setOnClickListener(this)
+        val logedIn = sharedViewModel.logedInOrNot()
+        if (logedIn){
+            navigateToHome()
+        }
     }
 
     override fun onClick(p0: View?) {
@@ -45,5 +64,9 @@ class LauncherActivity : AppCompatActivity(),View.OnClickListener {
                 startActivity(intent)
             }
         }
+    }
+    private fun navigateToHome() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }
